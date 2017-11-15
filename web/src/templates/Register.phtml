@@ -1,0 +1,82 @@
+<?php include "header.phtml" ?>
+<!---------- Body starts --------------->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a id="logo" class="navbar-brand" href=<?= $linkTo('Login'); ?>></a>
+            </div>
+        </div>
+    </nav>
+
+    <?= $fName = ""; $lName = ""; $username = ""; $email = ""; $pass1 = ""; $pass2 = "";?>
+    <h3>Sign Up:</h3>
+    <div class="container">
+        <form class="form-horizontal" action="../create/" method="post" autocomplete="off">
+        <label>Required fields are marked with a *</label>
+            <div class="form-group">
+                <label class="control-label col-sm-2">First Name: *</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="firstName" required="required" value="<?=$fName?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Last Name: *</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="lastName" required="required" value="<?=$lName?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Username: *</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="username" name="userName" required="required" value="<?=$username?>">
+                    <p id="result-username"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Email Address: *</label>
+                <div class="col-sm-4">
+                    <input type="email" class="form-control" name="eMail" required="required" value="<?=$email?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Password: *</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" name="pass1" required="required" value="<?=$pass1?>">
+                </div>
+            </div>
+            <div class="form-group">
+               <label class="control-label col-sm-2">Re enter Password: *</label>
+               <div class="col-sm-4">
+                    <input type="password" class="form-control" name="pass2" required="required" value="<?=$pass2?>">
+               </div>
+            </div>
+            <div class="col-sm-6">
+                <button name="create" type="submit" class="btn btn-default">Register</button>
+            </div>
+        </form>
+    </div>
+
+<!---------- Body ends -------------------->
+
+<script type="text/javascript">
+//function called every time user types a key in the username field
+//checks the database to see if username exist or not
+$("#username").keyup(function () {
+        var searchTerm = $('#username').val();
+
+        var result = document.getElementById('result-username');
+        result.innerHTML = "";
+        $.post("/usernamecheck",
+            {
+                username: searchTerm
+            },
+            function (data) {
+
+                if(data === "true"){
+                    result.innerHTML= "Username already exist";
+                }
+            })
+    });
+</script>
+<?php include "footer.phtml" ?>

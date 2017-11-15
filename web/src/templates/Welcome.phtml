@@ -1,0 +1,38 @@
+<?php include "header.phtml" ?>
+    <!---------- Body starts --------------->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a id="logo" class="navbar-brand" href="#"></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href=<?= $linkTo('Browse'); ?>>Browse</a></li>
+                 <li><a href=<?= $linkTo('Search'); ?>>Search</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href=<?= $linkTo('Login'); ?>><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="welcome">
+        <h2>Welcome <?= $_SESSION['first_name'] ?> <?= $_SESSION['last_name'] ?></h2>
+        <div>
+            <h4 class="col-sm-3">To search for products:</h4>
+            <p class="col-sm-8">
+                Click "Search" and in the search box, start typing for the product you wish to search for.
+                All products that match your search criteria will be displayed.
+            </p>
+        </div>
+        <div>
+            <h4 class="col-sm-3">To Browse for products:</h4>
+            <p class="col-sm-8">
+                Click "Browse" and tick the checkboxes on the left of the screen to narrow the product list according to category.
+                You can also tick if you want to show in stock items only.
+            </p>
+        </div>
+        <p class="col-sm-3"></p>
+        <p class="col-sm-8">Once you have finished, please sign out in the top right corner.</p>
+    </div>
+    <!---------- Body ends -------------------->
+<?php include "footer.phtml" ?>

@@ -1,0 +1,186 @@
+/*
+	Kelly Pitts 09098321
+*/
+
+body {
+	background-color: #e6e6ff;  /* blue/grey background */
+}
+
+/* adding margin to the left of h3 headings */
+h3 {
+	margin-left: 1%;
+}
+
+/* Center align headings on home page */
+h2 {
+	text-align: center;
+}
+
+/* Adding a background image for the logo on the nav menu */
+#logo {
+	background-image: url('logo.png');
+	width: 250px;
+	height: 95px;
+	background-position: 2px 2px;
+	background-repeat: no-repeat;
+	background-color: white;
+}
+
+/* removing bootstraps border radius to navbar */
+.navbar {
+	border-radius: 0;
+	border: none;
+}
+
+/* increasing height of nav menu to account for the size of the logo*/
+.navbar-nav {
+	height: 95px;
+}
+
+/* increasing list items height to match logo */
+.navbar-nav li, .navbar-nav li a {
+	height: 100%;
+	width: 100px;
+	text-align: center;
+}
+
+/* overriding background colour of nav menu when active */
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+	background-color: #00131a;
+}
+
+/* overriding bootstraps style so the forms are closer to the left of the screen */
+.container {
+	margin-left: 0.5%;
+}
+
+/* overriding background colour of nav menu */
+.container-fluid {
+	background-color: #00384d;
+}
+
+/* fixing the footer to the bottom of the screen */
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #00384d;
+	color: white;
+	text-align: center;
+}
+
+/* Adding top and bottom margin to footer */
+.p-footer {
+	margin: 10px 0;
+}
+
+/*
+ *	Welcome page styles
+ */
+#welcome h3 {
+	text-align: center;
+}
+
+/*Positioning the heading text left of the paragraph text */
+.col-sm-3 {
+	clear: left;
+	float: left;
+	text-align: center;
+}
+
+/*adding bottom margin to the paragraphs for spacing */
+.col-sm-8 {
+	margin-bottom: 20px;
+}
+
+/*
+ *	Register and Login page styles
+ */
+/* Submit button */
+button[type=submit] {
+	width: 160px;
+	float: right;
+}
+
+/* position and colour of text to display if username exist */
+#result-username {
+	color: red;
+	float: right;
+}
+
+/* login page form */
+.notInline.col-sm-4 {
+	float: none;
+}
+
+/*
+ * Search and Browse page styles
+ */
+/* Adding a border to the table elements on the search and browse pages */
+table, tr, td {
+	border: solid;
+	border-collapse: collapse;
+}
+
+/* positioning the table so it is not the full width of the screen */
+#search-table, #browse-table {
+	width: 80%;
+	float: right;
+	margin-right: 1%;
+	margin-bottom: 50px;
+}
+
+/* overwriting the width property as the browse table has less columns*/
+#browse-table {
+	width: 75%;
+}
+
+/* search box styles */
+input[name=search] {
+	margin: 5px 2% 25px;
+	width: 80%;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	/* adding a background image (magnifying glass) */
+	background-image: url('searchicon.png');
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	padding: 12px 15px 12px 40px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+/* increasing the size of search box when user clicks on it */
+input[name=search]:focus {
+	width: 100%;
+}
+
+/* position of checkboxes on browse page */
+input[type=checkbox] {
+	float: left;
+	margin-right: 10px;
+}
+
+/* position search box next to table */
+#search-div {
+	float: left;
+}
+
+/* position/width of search box */
+#search-div form {
+	width: 90%;
+	margin-left: 3%;
+}
+
+/* styles of checkboxes */
+#browse-check-boxes {
+	width: 20%;
+	float: left;
+	padding: 20px;
+	border: 2px solid;
+	margin-left: 10px;
+	margin-right: 10px;
+}

@@ -1,0 +1,76 @@
+<?php include "header.phtml" ?>
+    <!---------- Body starts --------------->
+    <nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+            <div class="navbar-header">
+                <a id="logo" class="navbar-brand" href=<?= $linkTo('Welcome'); ?>></a>
+            </div>
+           <ul class="nav navbar-nav">
+               <li><a href=<?= $linkTo('Browse'); ?>>Browse</a></li>
+               <li class="active"><a href="#">Search</a></li>
+           </ul>
+           <ul class="nav navbar-nav navbar-right">
+              <li><a href="/../ToolshedInc/login" name="logout" class="btn" role="button"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+           </ul>
+       </div>
+    </nav>
+
+    <h3 id="search">Search Products:</h3>
+    <div id="search-div">
+        <form action="" autocomplete="off">
+            <input type="text" name="search" id="searchfield" placeholder="Search..">
+        </form>
+    </div>
+
+    <table id="search-table" class="table table-striped">
+        <thead>
+        <tr>
+            <th>SKU</th>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Cost</th>
+            <th>Stock Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+<!---------- Body ends -------------------->
+
+<script>
+//function called every time user types a key in the search field
+//checks the database for any names that contain the letters typed
+$("#searchfield").keyup(function(){
+    var searchTerm = $('#searchfield').val();
+    var myBody = document.getElementById('search-table');
+    $.post("/searching",
+    {
+      name: searchTerm
+    },
+    function(data){
+        var res = data.split("|");
+        var table = document.getElementById('search-table').getElementsByTagName('tbody')[0];
+        table.innerHTML = ""; //wiping results every time so duplicate rows are not added
+        for(var i = 0; i < res.length-1; i++) {
+            var row = table.insertRow(table.rows.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+
+            //inserting cells into table
+            var res2 = res[i].split(":");
+            cell1.innerHTML = res2[0];
+            cell2.innerHTML = res2[1];
+            cell3.innerHTML = res2[2];
+            cell4.innerHTML = "$" + res2[3];
+            cell5.innerHTML = res2[4];
+        }
+    });
+});
+
+</script>
+
+<?php include "footer.phtml" ?>
